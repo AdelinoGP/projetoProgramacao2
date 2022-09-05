@@ -1,86 +1,52 @@
-#include <cstdlib>
-#include <iostream>
-#include <iomanip>
+#ifndef __LISTAESTATICA_H__
+#define __LISTAESTATICA_H__
+template <class T>
+class RespostaLeitura
+{
+public:
+  bool sucesso;
 
-#define TIPO int
-#define TMAX 100
-class ListaBasica{ // Classe de Armazenamento
+public:
+  T valor;
+  RespostaLeitura();
+};
+
+template <class T>
+class ListaBasica
+{ // Classe de Armazenamento
 protected:
-    unsigned short tam; // Tamanho ocupado da lista
-    TIPO v[TMAX]; // Vetor com os dados a serem armazenados
-  public:
-    ListaBasica(){
-      tam = 0; // inicializa a lista com tamanho zero
-    }
-
-    int comprimento(){// necessário por tam ser privado
-      return tam;
-    }
+  unsigned short tam; // Tamanho ocupado da lista
+  T *vetor;           // Vetor com os dados a serem armazenados
+public:
+  ListaBasica(int tamanho);
+  ~ListaBasica();
+  int comprimento();
 };
 
-class Lista : public ListaBasica{ //Definição da Classe que herda da classe ListaBasica
-  public:
-    TIPO primeiro(){
-      return v[0];
-    }
+template <class T>
+class Lista : public ListaBasica<T>
+{ // DefiniÃ§Ã£o da Classe que herda da classe ListaBasica
 
-    TIPO ultimo(){
-      return v[tam-1]; //tam-1 por todo vetor começar em 0
-    }
+public:
+  T primeiro();
 
-    bool localiza(TIPO val){
-      for (unsigned short i=0; i<tam;i++)
-        if (val == v[i])
-          return true;
-      return false;
-    }
+  T ultimo();
 
-    int pos(TIPO val){
-      for (unsigned short i=0; i<tam;i++)
-        if (val == v[i])
-            return i;
-      return -1;//posição impossível p/ sinalizar ñ encontrado
-    }
+  bool localiza(T val);
 
+  int pos(T val);
 
-    bool insere(TIPO val,unsigned short pos){
-      if ((pos>=0)&&(pos<=tam)&&(tam<TMAX)){
-        for (unsigned short i=tam; i>pos; i--)  // avança todos elementos
-          v[i] = v[i-1];
-        v[pos] = val;// grava o valor na posição
-        tam++; // aumenta o tamanho do vetor
-        return true;
-      }
-      return false;
-    }
+  bool insere(T val, unsigned short pos);
 
-    bool insereI(TIPO val)
-    {
-      return insere(val,0); //Chamada ao método insere
-    }
+  bool insereI(T val);
 
-    bool insereF(TIPO val)
-    {
-      return insere(val,tam);
-    }
+  bool insereF(T val);
 
-    bool delP(unsigned short pos){
-      if ((pos>=0)&&(pos<tam))
-      {
-        for (unsigned short i=pos; i<(tam-1);i++)
-          v[i]=v[i+1];
-        tam--;// diminui o tamanho do vetor
-        return true;
-      }
-      return false;
-    }
-    bool delV(TIPO val){
-      return delP(pos(val));
-    }
+  bool delP(unsigned short pos);
 
-    TIPO ler(unsigned short pos){
-      if ((pos>=0)&&(pos<tam))
-        return v[pos];
-      return -1;
-    }
+  bool delV(T val);
+
+  T ler(unsigned short pos);
 };
+
+#endif // __LISTAESTATICA_H__

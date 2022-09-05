@@ -1,6 +1,13 @@
 {
     "cSpell.words": [
+        "Basica",
         "termico",
         "Termico"
-    ]
+    ],
+    "files.associations": {
+        "tuple": "cpp",
+        "utility": "cpp",
+        "charconv": "cpp",
+        "xlocmon": "cpp"
+    }
 }

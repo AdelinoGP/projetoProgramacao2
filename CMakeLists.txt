@@ -4,6 +4,8 @@ project(TrabalhoTemperatura)
 
 include_directories(TrabalhoTemperatura PUBLIC "src")
 add_library(SimuladorTermico "src/temperatura.cpp")
+add_library(ListaEstatica "src/listaEstatica.cpp")
 
 add_executable(TrabalhoTemperatura "src/TrabalhoTemperatura.cpp")
 target_link_libraries(TrabalhoTemperatura PUBLIC SimuladorTermico)
+target_link_libraries(TrabalhoTemperatura PUBLIC ListaEstatica)
