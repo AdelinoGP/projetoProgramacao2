@@ -1,0 +1,12 @@
+[
+{
+  "directory": "C:/Users/agpen/Desktop/Projeto_Programacao2/build",
+  "command": "C:\\PROGRA~1\\LLVM\\bin\\CLANG_~1.EXE -IC:/Users/agpen/Desktop/Projeto_Programacao2/TrabalhoTemperatura -IC:/Users/agpen/Desktop/Projeto_Programacao2/PUBLIC -IC:/Users/agpen/Desktop/Projeto_Programacao2/src -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -o CMakeFiles\\SimuladorTermico.dir\\src\\Temperatura.cpp.obj -c C:\\Users\\agpen\\Desktop\\Projeto_Programacao2\\src\\Temperatura.cpp",
+  "file": "C:\\Users\\agpen\\Desktop\\Projeto_Programacao2\\src\\Temperatura.cpp"
+},
+{
+  "directory": "C:/Users/agpen/Desktop/Projeto_Programacao2/build",
+  "command": "C:\\PROGRA~1\\LLVM\\bin\\CLANG_~1.EXE -IC:/Users/agpen/Desktop/Projeto_Programacao2/TrabalhoTemperatura -IC:/Users/agpen/Desktop/Projeto_Programacao2/PUBLIC -IC:/Users/agpen/Desktop/Projeto_Programacao2/src -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -o CMakeFiles\\TrabalhoTemperatura.dir\\src\\TrabalhoTemperatura.cpp.obj -c C:\\Users\\agpen\\Desktop\\Projeto_Programacao2\\src\\TrabalhoTemperatura.cpp",
+  "file": "C:\\Users\\agpen\\Desktop\\Projeto_Programacao2\\src\\TrabalhoTemperatura.cpp"
+}
+]
