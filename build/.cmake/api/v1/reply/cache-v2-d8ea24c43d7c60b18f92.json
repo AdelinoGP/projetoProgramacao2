@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/Users/agpen/Desktop/Projeto_Programacao2/build"
+			"value" : "c:/Users/agpen/Desktop/projeto_programacao_2/build"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -139,10 +139,10 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
+					"value" : "CXX compiler"
 				}
 			],
-			"type" : "FILEPATH",
+			"type" : "STRING",
 			"value" : "C:/Program Files/LLVM/bin/clang++.exe"
 		},
 		{
@@ -283,10 +283,10 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
+					"value" : "C compiler"
 				}
 			],
-			"type" : "FILEPATH",
+			"type" : "STRING",
 			"value" : "C:/Program Files/LLVM/bin/clang.exe"
 		},
 		{
@@ -571,7 +571,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/agpen/Desktop/Projeto_Programacao2/build/CMakeFiles/pkgRedirects"
+			"value" : "C:/Users/agpen/Desktop/projeto_programacao_2/build/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -631,7 +631,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Users/agpen/Desktop/Projeto_Programacao2"
+			"value" : "C:/Users/agpen/Desktop/projeto_programacao_2"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1251,7 +1251,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/agpen/Desktop/Projeto_Programacao2/build"
+			"value" : "C:/Users/agpen/Desktop/projeto_programacao_2/build"
 		},
 		{
 			"name" : "TrabalhoTemperatura_IS_TOP_LEVEL",
@@ -1275,7 +1275,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/agpen/Desktop/Projeto_Programacao2"
+			"value" : "C:/Users/agpen/Desktop/projeto_programacao_2"
 		}
 	],
 	"kind" : "cache",

@@ -3,3 +3,8 @@
 1050	1120	6838001467861509	SimuladorTermico.lib	36ce0be533f4f198
 10	1049	6838001467235204	CMakeFiles/SimuladorTermico.dir/src/Temperatura.cpp.obj	988b359f915075e2
 1120	2437	6838001480964729	TrabalhoTemperatura.exe	56f77136076c0115
+8	34	0	clean	766cbc4f7aab79de
+14	1216	6840618269737845	CMakeFiles/SimuladorTermico.dir/src/Temperatura.cpp.obj	d754e37c56a37157
+32	1270	6840618270277844	CMakeFiles/TrabalhoTemperatura.dir/src/TrabalhoTemperatura.cpp.obj	c46b3fe53b586df9
+1216	1300	6840618270567830	SimuladorTermico.lib	36ce0be533f4f198
+1300	2686	6840618284217556	TrabalhoTemperatura.exe	56f77136076c0115
