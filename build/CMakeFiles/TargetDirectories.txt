@@ -1,4 +1,0 @@
-C:/Users/agpen/Desktop/projeto_programacao_2/build/CMakeFiles/SimuladorTermico.dir
-C:/Users/agpen/Desktop/projeto_programacao_2/build/CMakeFiles/TrabalhoTemperatura.dir
-C:/Users/agpen/Desktop/projeto_programacao_2/build/CMakeFiles/edit_cache.dir
-C:/Users/agpen/Desktop/projeto_programacao_2/build/CMakeFiles/rebuild_cache.dir
