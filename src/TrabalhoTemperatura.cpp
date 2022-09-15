@@ -10,7 +10,7 @@ using namespace std;
 int main()
 {
 	Temperatura t;	// Cria um objeto t da classe Temperatura
-	//ListaEncadeada<int> listaDeDados;
+	ListaEncadeada<int> listaDeDados;
 	t.inicializa(); // Inicializa a simulação
 	for (int i = 0; i < 10; ++i)
 	{

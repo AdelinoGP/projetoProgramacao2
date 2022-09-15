@@ -1,9 +1,10 @@
 {
   "ExpandedNodes": [
     "",
+    "\\include",
     "\\out",
     "\\src"
   ],
-  "SelectedNode": "\\CMakeLists.txt",
+  "SelectedNode": "\\src\\TrabalhoTemperatura.cpp",
   "PreviewInSolutionExplorer": false
 }

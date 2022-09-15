@@ -13,17 +13,15 @@ if(NOT ftxui_POPULATED)
   add_subdirectory(${ftxui_SOURCE_DIR} ${ftxui_BINARY_DIR} EXCLUDE_FROM_ALL)
 endif()
 
-project(TrabalhoTemperatura)
+project(TrabalhoTemperatura
+		VERSION 1.0.0
+		DESCRIPTION "Projeto de Monitoramento de temperatura para a matéria de Programação 2"
+		LANGUAGES CXX)
+		
+add_executable(TrabalhoTemperatura src/TrabalhoTemperatura.cpp
+									src/DadoSimulador.cpp
+									src/ListaEncadeada.cpp
+									src/Temperatura.cpp)
 
-include_directories(TrabalhoTemperatura PUBLIC "src")
-add_library(Temperatura "src/Temperatura.cpp")
-add_library(Elemento "src/Elemento.cpp")
-add_library(ListaEncadeada "src/ListaEncadeada.cpp")
-add_library(DadoSimulador "src/DadoSimulador.cpp")
-
-add_executable(TrabalhoTemperatura "src/TrabalhoTemperatura.cpp")
-target_link_libraries(TrabalhoTemperatura PUBLIC Elemento)
-target_link_libraries(TrabalhoTemperatura PUBLIC ListaEncadeada)
-target_link_libraries(TrabalhoTemperatura PUBLIC DadoSimulador)
-target_link_libraries(TrabalhoTemperatura PUBLIC Temperatura)
+target_include_directories(TrabalhoTemperatura PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
