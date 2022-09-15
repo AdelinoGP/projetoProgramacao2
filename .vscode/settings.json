@@ -1,6 +1,7 @@
 {
     "cSpell.words": [
         "Basica",
+        "LISTAENCADEADA",
         "LISTAESTATICA",
         "termico",
         "Termico"
@@ -9,6 +10,8 @@
         "tuple": "cpp",
         "utility": "cpp",
         "charconv": "cpp",
-        "xlocmon": "cpp"
+        "xlocmon": "cpp",
+        "xstring": "cpp",
+        "ctime": "cpp"
     }
 }

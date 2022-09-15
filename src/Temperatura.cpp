@@ -1,3 +1,5 @@
+#pragma warning( disable: 26495 28182)
+
 #include "Temperatura.h"
 
 void loopTemp(inicializarFunc i ){
@@ -13,6 +15,8 @@ Temperatura::Temperatura() {
 	hSimulador = LoadLibrary("simuladorTermico64.dll");
 #elif __i386__
 	hSimulador = LoadLibrary("simuladorTermico32.dll");
+#else
+	hSimulador = LoadLibrary("simuladorTermico64.dll");
 #endif
 	if (!hSimulador) {
 		std::cerr << "Erro ao carregar DLL do simulador termico" << std::endl;

@@ -1,6 +1,6 @@
 #ifndef TEMPERATURA_H_
 #define TEMPERATURA_H_
-#include<windows.h>
+#include <windows.h>
 #include <iostream>
 #include <thread>
 #include <chrono>
