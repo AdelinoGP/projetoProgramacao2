@@ -9,10 +9,12 @@ using namespace std;
 class DadoSimulador
 {
 public:
+        DadoSimulador();
+    DadoSimulador(double temperatura, bool resistorOn, bool coolerOn);
     double temperatura;
     bool resistorOn;
     bool coolerOn;
-    tm dataTempoCaptura;
+    tm *dataTempoCaptura;
     string paraString();
     string operator+(string str);
     bool operator==(DadoSimulador dado);
@@ -21,6 +23,7 @@ public:
     bool operator>=(DadoSimulador dado);
     bool operator<(DadoSimulador dado);
     bool operator<=(DadoSimulador dado);
+    friend ostream& operator<<(ostream& os, const DadoSimulador& dado);
 };
 
 #endif

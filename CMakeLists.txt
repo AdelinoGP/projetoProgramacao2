@@ -20,7 +20,6 @@ project(TrabalhoTemperatura
 		
 add_executable(TrabalhoTemperatura src/TrabalhoTemperatura.cpp
 									src/DadoSimulador.cpp
-									src/ListaEncadeada.cpp
 									src/Temperatura.cpp)
 
 target_include_directories(TrabalhoTemperatura PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
