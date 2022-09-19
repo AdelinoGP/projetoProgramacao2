@@ -21,7 +21,7 @@ public:
     }; // Construtor padrão
 
     void insereF(T x) // Adiciona um elemento ao final da lista
-    {                                           
+    {
         Elemento<T> *novo = new Elemento<T>(x); // Aloca espaço de memoria
         tam++;
         if (!cabeca) // Lista vazia
@@ -35,15 +35,15 @@ public:
         };
     }
 
-    void insereI(T x)// Método para adicionar um elemento novo no inicio.
-    {                                        
+    void insereI(T x) // Método para adicionar um elemento novo no inicio.
+    {
         Elemento<T> *novo = new Elemento<T>(x); // Aloca espaço de memoria
         tam++;
         novo->prox = cabeca;
         cabeca = novo;
-    }; 
+    };
 
-    void insere(T x, int pos)// Método para inserir em uma posição qualquer
+    void insere(T x, int pos) // Método para inserir em uma posição qualquer
     {
         if (pos == 0)
             insereI(x);
@@ -59,7 +59,7 @@ public:
             novo->prox = onde->prox;
             onde->prox = novo;
         }
-    }; 
+    };
 
     void imprime()
     { // Metodo para imprimir, na saida padrao, todos os elementos na tela;
@@ -74,13 +74,13 @@ public:
         } while (temp); // e uma atribuição e uma comparação
     };
 
-    bool localiza(T val)// Método de busca de um elemento na lista
-    { 
+    bool localiza(T val) // Método de busca de um elemento na lista
+    {
         for (Elemento<T> *onde = cabeca; onde; onde = onde->prox)
             if (onde->valor == val)
                 return true;
         return false;
-    }; 
+    };
 
     bool delU() // Apaga o último elemento de uma lista
     {
@@ -112,7 +112,8 @@ public:
 
     void limpa() // Apaga toda a lista
     {
-        while (delP());
+        while (delP())
+            ;
     };
 
     bool delV(T y) // Apaga o elemento de valor y
@@ -134,7 +135,6 @@ public:
         return false;
     };
 
-
     T pos(int pos) // Retorna a posição do elemento p;
     {
         if ((pos < tam) && (pos >= 0))
@@ -150,11 +150,11 @@ public:
     T ultimo() // Retorna o ultimo elemento ;
     {
         if (cabeca != NULL)
-        {                                 
-            Elemento<T>* onde = cabeca;   
-            while (onde->prox != NULL)    // Avança ate a ultima posição
-                onde = onde->prox;        // Avança 1 posição
-            return onde->valor;           // Retorna o valor
+        {
+            Elemento<T> *onde = cabeca;
+            while (onde->prox != NULL) // Avança ate a ultima posição
+                onde = onde->prox;     // Avança 1 posição
+            return onde->valor;        // Retorna o valor
         }
         return T();
     };
@@ -173,9 +173,12 @@ public:
 
         T mediana = T();
 
-        if (tam % 2 == 0)// se for Impar
+        if (cabeca == NULL) // Volta se a lista for nula
+            return mediana;
+
+        if (tam % 2 == 0) // se for Impar
             mediana = (this->pos((tam - 1) / 2) + this->pos(tam / 2)) / 2.0;
-        else             // se for par
+        else // se for par
             mediana = this->pos(tam / 2);
 
         return mediana;
@@ -183,11 +186,14 @@ public:
 
     T acharMedia() // Acha a Mediana de uma Lista, se isSorted for falso, faz sort;
     {
-
         T media = T();
 
-        Elemento<T>* onde = cabeca;
-        do {
+        if (cabeca == NULL) // Volta se a lista for nula
+            return media;
+
+        Elemento<T> *onde = cabeca;
+        do
+        {
             media += onde->valor;
             onde = onde->prox;
         } while (onde != NULL);
@@ -195,14 +201,14 @@ public:
         media /= tam;
         return media;
     };
-    
+
     int comprimento()
     {
         return tam;
     };
 
-   
-    void sort() { //Faz sorting na lista, usando bubble sort e os metodos de comparação de T
+    void sort()
+    { // Faz sorting na lista, usando bubble sort e os metodos de comparação de T
 
         int swapped;
         Elemento<T> *ptr1;
@@ -229,36 +235,42 @@ public:
         } while (swapped);
     }
 
-    void troca(Elemento<T>* a, Elemento<T>* b) //Troca dois elementos de posição
+    void troca(Elemento<T> *a, Elemento<T> *b) // Troca dois elementos de posição
     {
         T temp = a->valor;
         a->valor = b->valor;
         b->valor = temp;
     }
-   
-    template<typename Operation> void //Executa o functor op, que aceita um valor T e retorna void, em cada membro da lista
-        paraCada(Operation op) {
+
+    template <typename Operation>
+    void // Executa o functor op, que aceita um valor T e retorna void, em cada membro da lista
+    paraCada(Operation op)
+    {
         if (cabeca == NULL) // Volta se a lista for nula
             return;
-        Elemento<T>* onde = cabeca;
-        do {
+        Elemento<T> *onde = cabeca;
+        do
+        {
             op(&(onde->valor));
             onde = onde->prox;
         } while (onde != NULL);
     };
 
-    //Executa o functor op, que aceita um valor T e retorna void, em cada membro da lista, se este passa pelo predicado que aceita T e retorna bool
-    template<typename Pred, typename Operation> void
-        paraCadaSe(Pred predicate, Operation op) {
+    // Executa o functor op, que aceita um valor T e retorna void, em cada membro da lista, se este passa pelo predicado que aceita T e retorna bool
+    template <typename Pred, typename Operation>
+    void
+    paraCadaSe(Pred predicate, Operation op)
+    {
         if (cabeca == NULL) // Volta se a lista for nula
             return;
-        Elemento<T>* onde = cabeca;
-        do {
-            if (predicate(*onde)) op(*onde);
+        Elemento<T> *onde = cabeca;
+        do
+        {
+            if (predicate(*onde))
+                op(*onde);
             onde = onde->prox;
         } while (onde != NULL)
     };
-
 };
 
 #endif // LISTAENCADEADA_H_

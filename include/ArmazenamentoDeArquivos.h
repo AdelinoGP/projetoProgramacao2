@@ -9,27 +9,30 @@
 
 using namespace std;
 
-class SalvarLogDeDado {
+class SalvarLogDeDado
+{
 private:
-	fstream* arquivoDeLog;
+	fstream *arquivoDeLog;
+
 public:
-	SalvarLogDeDado() : arquivoDeLog() {};
-	SalvarLogDeDado(fstream* val) : arquivoDeLog(val) {};
-	void operator()(DadoSimulador* dado) {
+	SalvarLogDeDado() : arquivoDeLog(){};
+	SalvarLogDeDado(fstream *val) : arquivoDeLog(val){};
+	void operator()(DadoSimulador *dado)
+	{
 		*arquivoDeLog << dado->paraCSV() << "\n";
 	};
 };
 
 class ArmazenamentoDeArquivos
 {
-	private:
-		fstream arquivoDeLog;
-		SalvarLogDeDado salvarLogDeDado;
-	public:
-		ArmazenamentoDeArquivos();
-		ListaEncadeada<DadoSimulador> PegarListaDoLog();
-		void SalvarListaEmLog(ListaEncadeada<DadoSimulador>* lista);
-};
+private:
+	fstream arquivoDeLog;
+	SalvarLogDeDado salvarLogDeDado;
 
+public:
+	ArmazenamentoDeArquivos();
+	ListaEncadeada<DadoSimulador> PegarListaDoLog();
+	void SalvarListaEmLog(ListaEncadeada<DadoSimulador> *lista);
+};
 
 #endif

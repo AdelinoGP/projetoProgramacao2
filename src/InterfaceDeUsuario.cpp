@@ -3,22 +3,50 @@
 #include <string>
 #include <iostream>
 
+#include "Gerenciador.h"
+
 using namespace std;
 
-InterfaceDeUsuario::InterfaceDeUsuario(Gerenciador* gerente)
+InterfaceDeUsuario::InterfaceDeUsuario()
+{
+	this->gerente = NULL;
+};
+
+InterfaceDeUsuario::InterfaceDeUsuario(Gerenciador *gerente)
 {
 	this->gerente = gerente;
-}
+};
 
-bool InterfaceDeUsuario::exibirMenu()
+void InterfaceDeUsuario::exibirIntro()
+{
+	unsigned int opcao = 0;
+	cout << " Projeto Monitorador de Temperaturas" << endl
+		 << endl
+		 << "Bem vindo ao Monitorador de Temperaturas" << endl
+		 << "Deseja carregar os dados salvos na ultima vez?" << endl;
+	do
+	{
+		cout << "1 - Sim" << endl
+			 << "2 - Nao" << endl;
+
+		cin >> opcao;
+	} while (validarEntrada(opcao, 1, 2));
+
+	if (opcao == 1)
+		gerente->SelecionarOpcao(0, 1);
+};
+
+void InterfaceDeUsuario::exibirMenu()
 {
 	unsigned int opcao = 0;
 	do
 	{
 		limparTela();
-		cout << " Projeto Monitorador de Temperaturas" << endl << endl;
+		cout << " Projeto Monitorador de Temperaturas" << endl
+			 << endl;
 		cout << "Selecione uma das opcoes abaixo:" << endl;
-		do {
+		do
+		{
 			cout << "1 - Realizar leituras do simulador " << endl
 				 << "2 - Salvar e Recuperar Dados" << endl
 				 << "3 - Configurar limites de temperatura" << endl
@@ -28,184 +56,194 @@ bool InterfaceDeUsuario::exibirMenu()
 			cin >> opcao;
 		} while (validarEntrada(opcao, 1, 5));
 
-		switch (opcao) {
+		switch (opcao)
+		{
 		case 1:
-			cout << "Opção 1 Escolhida" << endl;
+			cout << "Opcao 1 Escolhida" << endl;
 			exibirMonitoramento();
 			break;
 
 		case 2:
-			cout << "Opção 2 Escolhida" << endl;
+			cout << "Opcao 2 Escolhida" << endl;
 			exibirArmazenamento();
 			break;
 
 		case 3:
-			cout << "Opção 3 Escolhida" << endl;
+			cout << "Opcao 3 Escolhida" << endl;
 			exibirControle();
 			break;
 
 		case 4:
-			cout << "Opção 4 Escolhida" << endl;
+			cout << "Opcao 4 Escolhida" << endl;
 			exibirAnalise();
 			break;
 
 		case 5:
-			cout << "Opção 5 Escolhida, o programa sera encerrado!" << endl;
+			cout << "Opcao 5 Escolhida, o programa sera encerrado!" << endl;
 			break;
 		}
 
 	} while (opcao != 5);
-}
+};
 
 void InterfaceDeUsuario::exibirMonitoramento()
 {
 	unsigned int opcao;
-	cout << "Monitoramento de Dados" << endl << endl;
+	cout << "Monitoramento de Dados" << endl
+		 << endl;
 	cout << "Selecione uma das opcoes abaixo:" << endl;
-	do {
+	do
+	{
 		cout << "1 - Alterar numero de leituras " << endl
-			<< "2 - Alterar intervalo(em ms) entre leituras" << endl
-			<< "3 - Realizar nova Leitura" << endl
-			<< "4 - Limpar dados da ultima leitura" << endl
-			<< "5 - Encerrar subMenu" << endl << endl;
+			 << "2 - Alterar intervalo(em ms) entre leituras" << endl
+			 << "3 - Realizar nova Leitura" << endl
+			 << "4 - Limpar dados da ultima leitura" << endl
+			 << "5 - Encerrar subMenu" << endl
+			 << endl;
 
 		cout << "Resultados da ultima leitura:" << endl;
-		//Exibir ultima leitura
+		gerente->SelecionarOpcao(0, 8);
 
 		cin >> opcao;
 	} while (validarEntrada(opcao, 1, 5));
 
-
-	switch (opcao) {
+	switch (opcao)
+	{
 	case 1:
-		cout << "Opção 1 Escolhida" << endl;
-		// gerenciador.SelecionarOpcao(1,1);
+		cout << "Opcao 1 Escolhida" << endl;
+		gerente->SelecionarOpcao(1, 1);
 		break;
 
 	case 2:
-		cout << "Opção 2 Escolhida" << endl;
-		// gerenciador.SelecionarOpcao(1,1);
+		cout << "Opcao 2 Escolhida" << endl;
+		gerente->SelecionarOpcao(1, 2);
 		break;
 
 	case 3:
-		cout << "Opção 3 Escolhida" << endl;
-		// gerenciador.SelecionarOpcao(1,1);
+		cout << "Opcao 3 Escolhida" << endl;
+		gerente->SelecionarOpcao(1, 3);
 		break;
 
 	case 4:
-		cout << "Opção 4 Escolhida" << endl;
-		// gerenciador.SelecionarOpcao(1,1);
+		cout << "Opcao 4 Escolhida" << endl;
+		gerente->SelecionarOpcao(1, 4);
 		break;
 
 	case 5:
-		cout << "Opção 5 Escolhida, o subMenu sera encerrado!" << endl;
+		cout << "Opcao 5 Escolhida, o subMenu sera encerrado!" << endl;
 		break;
 	}
-}
+};
 
 void InterfaceDeUsuario::exibirArmazenamento()
 {
 	unsigned int opcao;
-	cout << "Armazenamento de Dados" << endl << endl;
+	cout << "Armazenamento de Dados" << endl
+		 << endl;
 	cout << "Selecione uma das opcoes abaixo:" << endl;
-	do {
+	do
+	{
 		cout << "1 - Salvar leitura atual como .csv" << endl
-			<< "2 - Carregar dados salvos em .csv" << endl
-			<< "3 - Encerrar subMenu" << endl << endl;
+			 << "2 - Carregar dados salvos em .csv" << endl
+			 << "3 - Encerrar subMenu" << endl
+			 << endl;
 
 		cout << "Resultados da ultima leitura:" << endl;
-		//Exibir ultima leitura
+		gerente->SelecionarOpcao(0, 8);
 
 		cin >> opcao;
 	} while (validarEntrada(opcao, 1, 3));
 
-
-	switch (opcao) {
+	switch (opcao)
+	{
 	case 1:
-		cout << "Opção 1 Escolhida" << endl;
-		// gerenciador.SelecionarOpcao(2,1);
+		cout << "Opcao 1 Escolhida" << endl;
+		gerente->SelecionarOpcao(2, 1);
 		break;
 
 	case 2:
-		cout << "Opção 2 Escolhida" << endl;
-		// gerenciador.SelecionarOpcao(2,2);
+		cout << "Opcao 2 Escolhida" << endl;
+		gerente->SelecionarOpcao(2, 2);
 		break;
 
 	case 3:
-		cout << "Opção 3 Escolhida, o subMenu sera encerrado!" << endl;
+		cout << "Opcao 3 Escolhida, o subMenu sera encerrado!" << endl;
 		break;
 	}
-}
+};
 
 void InterfaceDeUsuario::exibirControle()
 {
 	unsigned int opcao;
-	cout << "Controle de Temperatura" << endl << endl;
+	cout << "Controle de Temperatura" << endl
+		 << endl;
 	cout << "Selecione uma das opcoes abaixo:" << endl;
-	do {
+	do
+	{
 		cout << "1 - Alterar o limiar de temperatura minimo" << endl
-			<< "2 - Alterar o limiar de temperatura maximo" << endl
-			<< "3 - Encerrar subMenu" << endl << endl;
+			 << "2 - Alterar o limiar de temperatura maximo" << endl
+			 << "3 - Encerrar subMenu" << endl
+			 << endl;
 
 		cout << "Limiares atuais:" << endl;
-		//Exibir limiares
+		gerente->SelecionarOpcao(0, 4);
 
 		cin >> opcao;
 	} while (validarEntrada(opcao, 1, 3));
 
-
-	switch (opcao) {
+	switch (opcao)
+	{
 	case 1:
-		cout << "Opção 1 Escolhida" << endl;
-		// gerenciador.SelecionarOpcao(3,1);
+		cout << "Opcao 1 Escolhida" << endl;
+		gerente->SelecionarOpcao(3, 1);
 		break;
 
 	case 2:
-		cout << "Opção 2 Escolhida" << endl;
-		// gerenciador.SelecionarOpcao(3,2);
+		cout << "Opcao 2 Escolhida" << endl;
+		gerente->SelecionarOpcao(3, 2);
 		break;
 
 	case 3:
-		cout << "Opção 3 Escolhida, o subMenu sera encerrado!" << endl;
+		cout << "Opcao 3 Escolhida, o subMenu sera encerrado!" << endl;
 		break;
 	}
-}
+};
 
 void InterfaceDeUsuario::exibirAnalise()
 {
 	unsigned int opcao;
-	cout << "Analise estatistica da leitura atual" << endl << endl;
+	cout << "Analise estatistica da leitura atual" << endl
+		 << endl;
 	cout << "Selecione uma das opcoes abaixo:" << endl;
-	do {
-		cout << "1 - Encerrar Submenu" << endl << endl;
+	do
+	{
+		cout << "1 - Encerrar Submenu" << endl
+			 << endl;
 
 		cout << "Analise Estatistica:" << endl;
-		//Exibir analise
+		gerente->SelecionarOpcao(4, 1);
 
 		cin >> opcao;
 	} while (opcao != 1);
 
-
-	switch (opcao) {
+	switch (opcao)
+	{
 	case 1:
-
-	case 3:
-		cout << "Opção 3 Escolhida, o subMenu sera encerrado!" << endl;
+		cout << "Opcao 1 Escolhida, o subMenu sera encerrado!" << endl;
 		break;
 	}
-}
-
+};
 
 void InterfaceDeUsuario::limparTela()
 {
-	cout << '\033c'; //Limpa o console em sistemas Unix e Windows após versão 10 TH2, alternativa seria usar system("cls");
-}
+	system("cls"); // Limpa o console
+};
 
 bool InterfaceDeUsuario::validarEntrada(unsigned int entrada, unsigned int minimo, unsigned int maximo)
 {
 	limparTela();
-	bool isValid = (entrada >= minimo && entrada <= maximo);
-	if (!isValid)
+	bool isInvalid = !(entrada >= minimo && entrada <= maximo); // Se for false, entrada valida
+	if (isInvalid)
 		cout << "Escolha Invalida, selecione uma das opcoes validas abaixo:" << endl;
-	return isValid;
-}
+	return isInvalid;
+};

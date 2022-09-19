@@ -1,5 +1,5 @@
 #include "ArmazenamentoDeArquivos.h"
- 
+
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -25,7 +25,8 @@ ListaEncadeada<DadoSimulador> ArmazenamentoDeArquivos::PegarListaDoLog()
 		string stringResistor;
 		string stringCooler;
 
-		while (getline(arquivoDeLog, stringDataTempo, SEPARADOR)) {
+		while (getline(arquivoDeLog, stringDataTempo, SEPARADOR))
+		{
 			getline(arquivoDeLog, stringTemperatura, SEPARADOR);
 			getline(arquivoDeLog, stringResistor, SEPARADOR);
 			getline(arquivoDeLog, stringCooler, '\n');
@@ -33,7 +34,7 @@ ListaEncadeada<DadoSimulador> ArmazenamentoDeArquivos::PegarListaDoLog()
 			double temperatura = stod(stringTemperatura);
 			bool resistor = stoi(stringResistor);
 			bool cooler = stoi(stringCooler);
-			DadoSimulador* dadoAtual = new DadoSimulador(temperatura, resistor, cooler, dataTempo);
+			DadoSimulador *dadoAtual = new DadoSimulador(temperatura, resistor, cooler, dataTempo);
 			listaDeDados.insereF(*dadoAtual);
 		}
 	}
@@ -41,8 +42,7 @@ ListaEncadeada<DadoSimulador> ArmazenamentoDeArquivos::PegarListaDoLog()
 	return listaDeDados;
 }
 
-
-void ArmazenamentoDeArquivos::SalvarListaEmLog(ListaEncadeada<DadoSimulador>* lista)
+void ArmazenamentoDeArquivos::SalvarListaEmLog(ListaEncadeada<DadoSimulador> *lista)
 {
 	arquivoDeLog.open(FILE_NAME, ios::out | ios::trunc);
 	if (arquivoDeLog.is_open())
@@ -51,6 +51,3 @@ void ArmazenamentoDeArquivos::SalvarListaEmLog(ListaEncadeada<DadoSimulador>* li
 	}
 	arquivoDeLog.close();
 }
-
-
-

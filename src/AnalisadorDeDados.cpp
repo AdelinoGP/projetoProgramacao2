@@ -19,7 +19,7 @@ AnalisadorDeDados::AnalisadorDeDados(int limMaximo, int limMinimo)
 	this->limMinimo = limMinimo;
 };
 
-void AnalisadorDeDados::AnalisarLista(ListaEncadeada<DadoSimulador>* lista)
+void AnalisadorDeDados::AnalisarLista(ListaEncadeada<DadoSimulador> *lista)
 {
 	listaTemperatura.limpa();
 	lista->paraCada(listarTemperaturas);
@@ -33,20 +33,19 @@ void AnalisadorDeDados::AnalisarLista(ListaEncadeada<DadoSimulador>* lista)
 
 	vezesAcimaMaximo = 0;
 	vezesAcimaMinimo = 0;
-	listaTemperatura.paraCada([this](double* valor) {
-		if (*valor > limMaximo) vezesAcimaMaximo++;
-	});
-	listaTemperatura.paraCada([this](double* valor) {
-		if (*valor < limMinimo) vezesAcimaMinimo++;
-	});
+	listaTemperatura.paraCada([this](double *valor)
+							  {
+		if (*valor > limMaximo) vezesAcimaMaximo++; });
+	listaTemperatura.paraCada([this](double *valor)
+							  {
+		if (*valor < limMinimo) vezesAcimaMinimo++; });
 }
 
-ostream& operator<<(ostream& os, const AnalisadorDeDados& analisador){
+ostream &operator<<(ostream &os, const AnalisadorDeDados &analisador)
+{
 	os << "Temperatura Maxima: " << analisador.tempMaxima << " Temperatura Minima: " << analisador.tempMinima << endl
-		<< "Media: " << analisador.media << " Mediana: " << analisador.mediana << endl;
+	   << "Media: " << analisador.media << " Mediana: " << analisador.mediana << endl;
 	if (analisador.limMaximo != 0)
 		os << "Vezes Acima do Limite Maximo: " << analisador.vezesAcimaMaximo << "Vezes Acima do Limite Minimo: " << analisador.vezesAcimaMinimo << endl;
 	return os;
 };
-
-

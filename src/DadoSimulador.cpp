@@ -84,7 +84,7 @@ bool DadoSimulador::operator<=(DadoSimulador dado)
     return this->temperatura <= dado.temperatura;
 }
 
-ostream& operator<<(ostream& os, const DadoSimulador& dado)
+ostream &operator<<(ostream &os, const DadoSimulador &dado)
 {
     char buf[100];
     strftime(buf, 100, "%a %b %d %T %Y", localtime(&(dado.dataTempoCaptura)));

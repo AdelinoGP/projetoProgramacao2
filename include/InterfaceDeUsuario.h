@@ -1,22 +1,22 @@
-#ifndef INTERFACE_H_
-#define INTERFACE_H_
+#ifndef USERVIEW_H_
+#define USERVIEW_H_
+class Gerenciador;
 
-#include "Gerenciador.h"
-
-class InterfaceDeUsuario {
+class InterfaceDeUsuario
+{
 private:
-	int menuAtual = 0;
-	int subMenuAtual = 0;
 	Gerenciador* gerente;
 public:
-	InterfaceDeUsuario(Gerenciador * gerente);
-	bool exibirMenu();
+	InterfaceDeUsuario();
+	InterfaceDeUsuario(Gerenciador* gerente);
+	void exibirIntro();
+	void exibirMenu();
 	void exibirMonitoramento();
 	void exibirArmazenamento();
 	void exibirControle();
 	void exibirAnalise();
 	void limparTela();
-	bool validarEntrada(unsigned int entrada, unsigned int minimo , unsigned int maximo);
+	bool validarEntrada(unsigned int entrada, unsigned int minimo, unsigned int maximo);
 };
 
 #endif

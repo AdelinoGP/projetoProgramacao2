@@ -5,22 +5,25 @@
 #include "ListaEncadeada.h"
 #include <iostream>
 
-class ListarTemperaturas {
+class ListarTemperaturas
+{
 public:
 	ListaEncadeada<double> *lista;
-	ListarTemperaturas() : lista() {};
-	ListarTemperaturas(ListaEncadeada<double>* val) : lista(val) {};
-	void operator()(DadoSimulador* dado)
+	ListarTemperaturas() : lista(){};
+	ListarTemperaturas(ListaEncadeada<double> *val) : lista(val){};
+	void operator()(DadoSimulador *dado)
 	{
 		double temp = dado->getTemperatura();
 		lista->insereF(temp);
 	};
 };
 
-class AnalisadorDeDados {
+class AnalisadorDeDados
+{
 private:
 	ListarTemperaturas listarTemperaturas;
 	ListaEncadeada<double> listaTemperatura;
+
 public:
 	double tempMaxima = 0;
 	double tempMinima = 0;
@@ -33,9 +36,8 @@ public:
 
 	AnalisadorDeDados();
 	AnalisadorDeDados(int limMaximo, int limMinimo);
-	void AnalisarLista(ListaEncadeada<DadoSimulador>* lista);
-	friend ostream& operator<<(ostream& os, const AnalisadorDeDados& analisador);
+	void AnalisarLista(ListaEncadeada<DadoSimulador> *lista);
+	friend ostream &operator<<(ostream &os, const AnalisadorDeDados &analisador);
 };
-
 
 #endif
