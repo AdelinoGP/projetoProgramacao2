@@ -11,7 +11,7 @@ add_executable(TrabalhoTemperatura  "src/TrabalhoTemperatura.cpp"
 									"src/Temperatura.cpp"
 									"src/ArmazenamentoDeArquivos.cpp"
 									"src/Utils.cpp"
-									"src/AnalisadorDeDados.cpp")
+									"src/AnalisadorDeDados.cpp" "src/InterfaceDeUsuario.cpp" "include/InterfaceDeUsuario.h" "include/Gerenciador.h" "src/Gerenciador.cpp")
 
 target_include_directories(TrabalhoTemperatura PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 

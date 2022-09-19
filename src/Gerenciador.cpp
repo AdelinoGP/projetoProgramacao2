@@ -1,0 +1,2 @@
+#include "Gerenciador.h"
+
