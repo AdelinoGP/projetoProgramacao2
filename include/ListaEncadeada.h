@@ -63,6 +63,9 @@ public:
 
     void imprime()
     { // Metodo para imprimir, na saida padrao, todos os elementos na tela;
+
+        if (cabeca == NULL) // Volta se a lista for nula
+            return;
         Elemento<T> *temp = cabeca;
         do
         {
@@ -141,7 +144,56 @@ public:
                 onde = onde->prox;        // Avança 1 posição
             return onde->valor;           // Retorna o valor
         }
-        return cabeca->valor;
+        return T();
+    };
+
+    T ultimo() // Retorna o ultimo elemento ;
+    {
+        if (cabeca != NULL)
+        {                                 
+            Elemento<T>* onde = cabeca;   
+            while (onde->prox != NULL)    // Avança ate a ultima posição
+                onde = onde->prox;        // Avança 1 posição
+            return onde->valor;           // Retorna o valor
+        }
+        return T();
+    };
+
+    T primeiro() // Retorna o primeiro elemento;
+    {
+        if (cabeca != NULL)
+            return cabeca->valor;
+        return T();
+    };
+
+    T acharMediana(bool isSorted) // Acha a Mediana de uma Lista, se isSorted for falso, faz sort;
+    {
+        if (!isSorted)
+            this->sort();
+
+        T mediana = T();
+
+        if (tam % 2 == 0)// se for Impar
+            mediana = (this->pos((tam - 1) / 2) + this->pos(tam / 2)) / 2.0;
+        else             // se for par
+            mediana = this->pos(tam / 2);
+
+        return mediana;
+    };
+
+    T acharMedia() // Acha a Mediana de uma Lista, se isSorted for falso, faz sort;
+    {
+
+        T media = T();
+
+        Elemento<T>* onde = cabeca;
+        do {
+            media += onde->valor;
+            onde = onde->prox;
+        } while (onde != NULL);
+
+        media /= tam;
+        return media;
     };
     
     int comprimento()
@@ -149,23 +201,64 @@ public:
         return tam;
     };
 
-    template<typename Operation> void
+   
+    void sort() { //Faz sorting na lista, usando bubble sort e os metodos de comparação de T
+
+        int swapped;
+        Elemento<T> *ptr1;
+        Elemento<T> *lptr = NULL;
+
+        if (cabeca == NULL) // Volta se a lista for nula
+            return;
+
+        do
+        {
+            swapped = 0;
+            ptr1 = cabeca;
+
+            while (ptr1->prox != lptr)
+            {
+                if (ptr1->valor > ptr1->prox->valor)
+                {
+                    troca(ptr1, ptr1->prox);
+                    swapped = 1;
+                }
+                ptr1 = ptr1->prox;
+            }
+            lptr = ptr1;
+        } while (swapped);
+    }
+
+    void troca(Elemento<T>* a, Elemento<T>* b) //Troca dois elementos de posição
+    {
+        T temp = a->valor;
+        a->valor = b->valor;
+        b->valor = temp;
+    }
+   
+    template<typename Operation> void //Executa o functor op, que aceita um valor T e retorna void, em cada membro da lista
         paraCada(Operation op) {
+        if (cabeca == NULL) // Volta se a lista for nula
+            return;
         Elemento<T>* onde = cabeca;
         do {
             op(&(onde->valor));
             onde = onde->prox;
-        } while (onde->prox != NULL);
+        } while (onde != NULL);
     };
 
+    //Executa o functor op, que aceita um valor T e retorna void, em cada membro da lista, se este passa pelo predicado que aceita T e retorna bool
     template<typename Pred, typename Operation> void
         paraCadaSe(Pred predicate, Operation op) {
+        if (cabeca == NULL) // Volta se a lista for nula
+            return;
         Elemento<T>* onde = cabeca;
         do {
             if (predicate(*onde)) op(*onde);
             onde = onde->prox;
-        } while (onde->prox != NULL)
+        } while (onde != NULL)
     };
+
 };
 
 #endif // LISTAENCADEADA_H_

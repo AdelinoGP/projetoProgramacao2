@@ -2,9 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\include",
-    "\\out",
     "\\src"
   ],
-  "SelectedNode": "\\src\\Temperatura.cpp",
+  "SelectedNode": "\\include\\ListaEncadeada.h",
   "PreviewInSolutionExplorer": false
 }

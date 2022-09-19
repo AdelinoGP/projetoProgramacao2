@@ -9,7 +9,6 @@
 
 using namespace std;
 
-
 class SalvarLogDeDado {
 private:
 	fstream* arquivoDeLog;
@@ -30,8 +29,6 @@ class ArmazenamentoDeArquivos
 		ArmazenamentoDeArquivos();
 		ListaEncadeada<DadoSimulador> PegarListaDoLog();
 		void SalvarListaEmLog(ListaEncadeada<DadoSimulador>* lista);
-
-
 };
 
 

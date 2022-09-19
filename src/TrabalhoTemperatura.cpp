@@ -5,21 +5,24 @@
 #include "ListaEncadeada.h"
 #include "DadoSimulador.h"
 #include "Temperatura.h"
+#include "AnalisadorDeDados.h"
+
 using namespace std;
 
 int main()
 {
-	ArmazenamentoDeArquivos armazenamento;
-
 	Temperatura t;	// Cria um objeto t da classe Temperatura
 	t.inicializa(); // Inicializa a simulação
 
-	ListaEncadeada<DadoSimulador> listaDeDados = armazenamento.PegarListaDoLog();
+	ArmazenamentoDeArquivos armazenamento;
+	AnalisadorDeDados analisador;
 
-	double tempMax = 25;
+	ListaEncadeada<DadoSimulador> listaDeDados /*= armazenamento.PegarListaDoLog()*/;
+
+	double tempMax = 26;
 	double tempMin = 24;
 
-	bool controlarTemperatura = false;
+	bool controlarTemperatura = true;
 	bool resistorOn = false;
 	bool coolerOn = false;
 	for (int i = 0; i < 10; ++i)
@@ -45,8 +48,10 @@ int main()
 
 		DadoSimulador dado(temp, resistorOn, coolerOn);
 		listaDeDados.insereF(dado);
-		Sleep(1000);
+		Sleep(1);
 	}
+	analisador.AnalisarLista(&listaDeDados);
+	cout << analisador;
 	listaDeDados.imprime();
 	armazenamento.SalvarListaEmLog(&listaDeDados);
 	return EXIT_SUCCESS;

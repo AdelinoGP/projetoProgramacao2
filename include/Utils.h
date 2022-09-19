@@ -8,5 +8,4 @@ using namespace std;
 
 time_t StringParaTempo(string tempoComoString);
 
-
 #endif

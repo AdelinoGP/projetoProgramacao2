@@ -21,6 +21,7 @@ class DadoSimulador{
         DadoSimulador(double temperatura, bool resistorOn, bool coolerOn, time_t dataTempoCaptura);
         time_t dataTempoCaptura;
 
+        double getTemperatura() const { return temperatura; }
         string paraString();
         string paraCSV();
         string operator+(string str);
