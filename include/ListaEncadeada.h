@@ -107,6 +107,11 @@ public:
         return false;
     };
 
+    void limpa() // Apaga toda a lista
+    {
+        while (delP());
+    };
+
     bool delV(T y) // Apaga o elemento de valor y
     {
         if ((tam > 0) && (localiza(y)))
@@ -126,6 +131,7 @@ public:
         return false;
     };
 
+
     T pos(int pos) // Retorna a posição do elemento p;
     {
         if ((pos < tam) && (pos >= 0))
@@ -141,6 +147,24 @@ public:
     int comprimento()
     {
         return tam;
+    };
+
+    template<typename Operation> void
+        paraCada(Operation op) {
+        Elemento<T>* onde = cabeca;
+        do {
+            op(&(onde->valor));
+            onde = onde->prox;
+        } while (onde->prox != NULL);
+    };
+
+    template<typename Pred, typename Operation> void
+        paraCadaSe(Pred predicate, Operation op) {
+        Elemento<T>* onde = cabeca;
+        do {
+            if (predicate(*onde)) op(*onde);
+            onde = onde->prox;
+        } while (onde->prox != NULL)
     };
 };
 

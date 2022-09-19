@@ -49,7 +49,7 @@ int Temperatura::enviarComando(int c) {
 void Temperatura::loopTemp() {
 	while (true) {
 		leitura();
-		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+		Sleep(1000);
 	}
 }
 

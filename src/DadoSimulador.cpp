@@ -21,14 +21,32 @@ DadoSimulador::DadoSimulador(double temperatura, bool resistorOn, bool coolerOn)
     this->temperatura = temperatura;
     this->resistorOn = resistorOn;
     this->coolerOn = coolerOn;
-    time_t currentTime = time(0);
-    this->dataTempoCaptura = gmtime(&currentTime);
+    this->dataTempoCaptura = time(0);
+}
+
+DadoSimulador::DadoSimulador(double temperatura, bool resistorOn, bool coolerOn, time_t dataTempoCaptura)
+{
+    this->temperatura = temperatura;
+    this->resistorOn = resistorOn;
+    this->coolerOn = coolerOn;
+    this->dataTempoCaptura = dataTempoCaptura;
 }
 
 string DadoSimulador::paraString()
 {
     ostringstream oss;
-    oss << "DataHora: " << put_time(dataTempoCaptura, "%d-%m-%Y %H-%M-%S") << " Temperatura: " << to_string(temperatura) << " Resistor: " << to_string(resistorOn) << " Cooler: " << to_string(coolerOn);
+    char buf[100];
+    strftime(buf, 100, "%a %b %d %T %Y", localtime(&dataTempoCaptura));
+    oss << "DataHora: " << buf << " Temperatura: " << to_string(temperatura) << " Resistor: " << to_string(resistorOn) << " Cooler: " << to_string(coolerOn);
+    return oss.str();
+}
+
+string DadoSimulador::paraCSV()
+{
+    ostringstream oss;
+    char buf[100];
+    strftime(buf, 100, "%a %b %d %T %Y", localtime(&dataTempoCaptura));
+    oss << buf << SEPARADOR << to_string(temperatura) << SEPARADOR << to_string(resistorOn) << SEPARADOR << to_string(coolerOn);
     return oss.str();
 }
 
@@ -68,6 +86,8 @@ bool DadoSimulador::operator<=(DadoSimulador dado)
 
 ostream& operator<<(ostream& os, const DadoSimulador& dado)
 {
-    os << "DataHora: " << put_time(dado.dataTempoCaptura, "%d-%m-%Y %H-%M-%S") << " Temperatura: " << to_string(dado.temperatura) << " Resistor: " << to_string(dado.resistorOn) << " Cooler: " << to_string(dado.coolerOn);;
+    char buf[100];
+    strftime(buf, 100, "%a %b %d %T %Y", localtime(&(dado.dataTempoCaptura)));
+    os << "DataHora: " << buf << " Temperatura: " << to_string(dado.temperatura) << " Resistor: " << to_string(dado.resistorOn) << " Cooler: " << to_string(dado.coolerOn);
     return os;
 }
