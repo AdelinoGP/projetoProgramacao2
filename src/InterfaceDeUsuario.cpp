@@ -2,6 +2,8 @@
 
 #include <string>
 #include <iostream>
+#include <limits>
+#include <cstddef>
 
 #include "Gerenciador.h"
 
@@ -30,7 +32,7 @@ void InterfaceDeUsuario::exibirIntro()
 			 << "2 - Nao" << endl;
 
 		cin >> opcao;
-	} while (validarEntrada(opcao, 1, 2));
+	} while (validarOpcao(opcao, 1, 2));
 
 	if (opcao == 1)
 		gerente->SelecionarOpcao(0, 1);
@@ -54,7 +56,7 @@ void InterfaceDeUsuario::exibirMenu()
 				 << "5 - Encerrar programa" << endl;
 
 			cin >> opcao;
-		} while (validarEntrada(opcao, 1, 5));
+		} while (validarOpcao(opcao, 1, 5));
 
 		switch (opcao)
 		{
@@ -105,7 +107,7 @@ void InterfaceDeUsuario::exibirMonitoramento()
 		gerente->SelecionarOpcao(0, 8);
 
 		cin >> opcao;
-	} while (validarEntrada(opcao, 1, 5));
+	} while (validarOpcao(opcao, 1, 5));
 
 	switch (opcao)
 	{
@@ -152,7 +154,7 @@ void InterfaceDeUsuario::exibirArmazenamento()
 		gerente->SelecionarOpcao(0, 8);
 
 		cin >> opcao;
-	} while (validarEntrada(opcao, 1, 3));
+	} while (validarOpcao(opcao, 1, 3));
 
 	switch (opcao)
 	{
@@ -189,7 +191,7 @@ void InterfaceDeUsuario::exibirControle()
 		gerente->SelecionarOpcao(0, 4);
 
 		cin >> opcao;
-	} while (validarEntrada(opcao, 1, 3));
+	} while (validarOpcao(opcao, 1, 3));
 
 	switch (opcao)
 	{
@@ -239,11 +241,95 @@ void InterfaceDeUsuario::limparTela()
 	system("cls"); // Limpa o console
 };
 
-bool InterfaceDeUsuario::validarEntrada(unsigned int entrada, unsigned int minimo, unsigned int maximo)
+bool InterfaceDeUsuario::validarOpcao(unsigned int entrada, unsigned int minimo, unsigned int maximo)
 {
 	limparTela();
 	bool isInvalid = !(entrada >= minimo && entrada <= maximo); // Se for false, entrada valida
 	if (isInvalid)
 		cout << "Escolha Invalida, selecione uma das opcoes validas abaixo:" << endl;
 	return isInvalid;
+};
+
+void InterfaceDeUsuario::validarEntrada(int& val, int minimo, int maximo)
+{
+	bool entradaInvalida = true;
+	while (entradaInvalida) {
+		if (cin >> val && val >= minimo && val <= maximo)
+			entradaInvalida = false;
+		else {
+			cout << "Por favor entre um numero inteiro valido, no intervalo de " << minimo << " ate " << maximo << endl;
+			cin.clear();
+			cin.ignore(1000, '\n');
+		}
+	}
+};
+
+void InterfaceDeUsuario::validarEntrada(int& val)
+{
+	bool entradaInvalida = true;
+	while (entradaInvalida) {
+		if (cin >> val)
+			entradaInvalida = false;
+		else {
+			cout << "Por favor entre um numero inteiro valido" << endl;
+			cin.clear();
+			cin.ignore(1000, '\n');
+		}
+	}
+};
+
+void InterfaceDeUsuario::validarEntrada(unsigned int& val, unsigned int minimo, unsigned int maximo)
+{
+	bool entradaInvalida = true;
+	while (entradaInvalida) {
+		if (cin >> val && val >= minimo && val <= maximo)
+			entradaInvalida = false;
+		else {
+			cout << "Por favor entre um numero inteiro positivo valido, no intervalo de " << minimo << " ate " << maximo << endl;
+			cin.clear();
+			cin.ignore(1000, '\n');
+		}
+	}
+};
+
+void InterfaceDeUsuario::validarEntrada(unsigned int& val)
+{
+	bool entradaInvalida = true;
+	while (entradaInvalida) {
+		if (cin >> val)
+			entradaInvalida = false;
+		else {
+			cout << "Por favor entre um numero inteiro positivo valido" << endl;
+			cin.clear();
+			cin.ignore(1000, '\n');
+		}
+	}
+};
+
+void InterfaceDeUsuario::validarEntrada(char& val)
+{
+	bool entradaInvalida = true;
+	while (entradaInvalida) {
+		if (cin >> val)
+			entradaInvalida = false;
+		else {
+			cout << "Por favor entre um caracter valido" << endl;
+			cin.clear();
+			cin.ignore(1000, '\n');
+		}
+	}
+};
+
+void InterfaceDeUsuario::validarEntrada(double& val)
+{
+	bool entradaInvalida = true;
+	while (entradaInvalida) {
+		if (cin >> val)
+			entradaInvalida = false;
+		else {
+			cout << "Por favor entre um double valido" << endl;
+			cin.clear();
+			cin.ignore(1000, '\n');
+		}
+	}
 };

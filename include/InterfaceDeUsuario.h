@@ -16,7 +16,13 @@ public:
 	void exibirControle();
 	void exibirAnalise();
 	void limparTela();
-	bool validarEntrada(unsigned int entrada, unsigned int minimo, unsigned int maximo);
+	bool validarOpcao(unsigned int entrada, unsigned int minimo, unsigned int maximo);
+	void validarEntrada(int& val, int minimo, int maximo);
+	void validarEntrada(int& val);
+	void validarEntrada(unsigned int& val, unsigned int minimo, unsigned int maximo);
+	void validarEntrada(unsigned int& val);
+	void validarEntrada(char& val);
+	void validarEntrada(double& val);
 };
 
 #endif

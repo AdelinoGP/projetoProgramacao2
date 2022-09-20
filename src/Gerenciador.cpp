@@ -107,13 +107,13 @@ void Gerenciador::SelecionarOpcao(unsigned int menu, unsigned int subMenu)
 	case 0: // Menu Inicial e metodos comuns
 		switch (subMenu)
 		{
-		case 1:
+		case 1: // Carrega dados armazenados em .csv
 			CarregarDadosArmazenados();
 			break;
-		case 4:
+		case 4: // Imprime Limites
 			cout << "Limiar Superior: " << limiarMax << " Limiar Inferior: " << limiarMin << endl;
 			break;
-		case 8:
+		case 8: // Imprime Dados
 			ImprimirDados();
 			break;
 		}
@@ -123,11 +123,11 @@ void Gerenciador::SelecionarOpcao(unsigned int menu, unsigned int subMenu)
 		{
 		case 1: // Alterar numero de leituras
 			cout << "Digite a quantidade de leituras" << endl;
-			cin >> leituras;
+			uInterface.validarEntrada(leituras);
 			break;
 		case 2: // Alterar intervalo(em ms) entre leituras
 			cout << "Digite o valor do novo intervalo" << endl;
-			cin >> intervalo;
+			uInterface.validarEntrada(intervalo);
 			break;
 
 		case 3: // Realizar nova Leitura
@@ -156,15 +156,15 @@ void Gerenciador::SelecionarOpcao(unsigned int menu, unsigned int subMenu)
 		{
 		case 1: //  Alterar o limiar de temperatura minimo
 			cout << "Digite o valor do novo limiar minimo" << endl;
-			cin >> limiarMin;
+			uInterface.validarEntrada(limiarMin);
 			break;
 		case 2: //  Alterar o limiar de temperatura maximo
 			cout << "Digite o valor do novo limiar maximo" << endl;
-			cin >> limiarMax;
+			uInterface.validarEntrada(limiarMax);
 			break;
 		}
 		break;
-	case 4:				  // Estatistica
+	case 4:	// Estatistica
 		if (subMenu == 1) //  Imprime a analise de dado
 			AnalisarDados();
 		break;
