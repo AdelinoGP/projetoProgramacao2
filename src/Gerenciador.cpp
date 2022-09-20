@@ -23,7 +23,7 @@ void Gerenciador::LoopPrincipal()
 
 void Gerenciador::RealizarLeitura(unsigned int quantidade, unsigned int intervalo)
 {
-	cout << "Realizando leituras por favor aguarde..." << endl;
+	cout << "Realizando leituras, por favor aguarde..." << endl;
 	for (unsigned int i = 0; i < quantidade; ++i)
 	{
 		double temp = t.lerTemp();

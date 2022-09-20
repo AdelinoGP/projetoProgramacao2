@@ -16,7 +16,7 @@ public:
 	void exibirControle();
 	void exibirAnalise();
 	void limparTela();
-	bool validarOpcao(unsigned int entrada, unsigned int minimo, unsigned int maximo);
+	bool validarOpcao(unsigned int& entrada, unsigned int minimo, unsigned int maximo);
 	void validarEntrada(int& val, int minimo, int maximo);
 	void validarEntrada(int& val);
 	void validarEntrada(unsigned int& val, unsigned int minimo, unsigned int maximo);

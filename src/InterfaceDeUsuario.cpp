@@ -31,8 +31,7 @@ void InterfaceDeUsuario::exibirIntro()
 		cout << "1 - Sim" << endl
 			 << "2 - Nao" << endl;
 
-		cin >> opcao;
-	} while (validarOpcao(opcao, 1, 2));
+	} while (!validarOpcao(opcao, 1, 2));
 
 	if (opcao == 1)
 		gerente->SelecionarOpcao(0, 1);
@@ -55,8 +54,7 @@ void InterfaceDeUsuario::exibirMenu()
 				 << "4 - Analisar dados" << endl
 				 << "5 - Encerrar programa" << endl;
 
-			cin >> opcao;
-		} while (validarOpcao(opcao, 1, 5));
+		} while (!validarOpcao(opcao, 1, 5));
 
 		switch (opcao)
 		{
@@ -90,7 +88,7 @@ void InterfaceDeUsuario::exibirMenu()
 
 void InterfaceDeUsuario::exibirMonitoramento()
 {
-	unsigned int opcao;
+	unsigned int opcao = 0;
 	cout << "Monitoramento de Dados" << endl
 		 << endl;
 	cout << "Selecione uma das opcoes abaixo:" << endl;
@@ -106,8 +104,7 @@ void InterfaceDeUsuario::exibirMonitoramento()
 		cout << "Resultados da ultima leitura:" << endl;
 		gerente->SelecionarOpcao(0, 8);
 
-		cin >> opcao;
-	} while (validarOpcao(opcao, 1, 5));
+	} while (!validarOpcao(opcao, 1, 5));
 
 	switch (opcao)
 	{
@@ -139,7 +136,7 @@ void InterfaceDeUsuario::exibirMonitoramento()
 
 void InterfaceDeUsuario::exibirArmazenamento()
 {
-	unsigned int opcao;
+	unsigned int opcao = 0;
 	cout << "Armazenamento de Dados" << endl
 		 << endl;
 	cout << "Selecione uma das opcoes abaixo:" << endl;
@@ -153,8 +150,7 @@ void InterfaceDeUsuario::exibirArmazenamento()
 		cout << "Resultados da ultima leitura:" << endl;
 		gerente->SelecionarOpcao(0, 8);
 
-		cin >> opcao;
-	} while (validarOpcao(opcao, 1, 3));
+	} while (!validarOpcao(opcao, 1, 3));
 
 	switch (opcao)
 	{
@@ -176,7 +172,7 @@ void InterfaceDeUsuario::exibirArmazenamento()
 
 void InterfaceDeUsuario::exibirControle()
 {
-	unsigned int opcao;
+	unsigned int opcao = 0;
 	cout << "Controle de Temperatura" << endl
 		 << endl;
 	cout << "Selecione uma das opcoes abaixo:" << endl;
@@ -190,8 +186,7 @@ void InterfaceDeUsuario::exibirControle()
 		cout << "Limiares atuais:" << endl;
 		gerente->SelecionarOpcao(0, 4);
 
-		cin >> opcao;
-	} while (validarOpcao(opcao, 1, 3));
+	} while (!validarOpcao(opcao, 1, 3));
 
 	switch (opcao)
 	{
@@ -213,7 +208,7 @@ void InterfaceDeUsuario::exibirControle()
 
 void InterfaceDeUsuario::exibirAnalise()
 {
-	unsigned int opcao;
+	unsigned int opcao = 0;
 	cout << "Analise estatistica da leitura atual" << endl
 		 << endl;
 	cout << "Selecione uma das opcoes abaixo:" << endl;
@@ -225,8 +220,7 @@ void InterfaceDeUsuario::exibirAnalise()
 		cout << "Analise Estatistica:" << endl;
 		gerente->SelecionarOpcao(4, 1);
 
-		cin >> opcao;
-	} while (opcao != 1);
+	} while (!validarOpcao(opcao,1,1));
 
 	switch (opcao)
 	{
@@ -241,13 +235,21 @@ void InterfaceDeUsuario::limparTela()
 	system("cls"); // Limpa o console
 };
 
-bool InterfaceDeUsuario::validarOpcao(unsigned int entrada, unsigned int minimo, unsigned int maximo)
+bool InterfaceDeUsuario::validarOpcao(unsigned int &entrada, unsigned int minimo, unsigned int maximo)
 {
+	cin >> entrada;
+	if (cin.good() && entrada >= minimo && entrada <= maximo) {
+		limparTela();
+		return true;
+	}
+
 	limparTela();
-	bool isInvalid = !(entrada >= minimo && entrada <= maximo); // Se for false, entrada valida
-	if (isInvalid)
-		cout << "Escolha Invalida, selecione uma das opcoes validas abaixo:" << endl;
-	return isInvalid;
+	cin.clear();
+	cin.ignore(1000, '\n');
+
+	cout << "Escolha Invalida, selecione uma das opcoes validas abaixo:" << endl;
+
+	return false;
 };
 
 void InterfaceDeUsuario::validarEntrada(int& val, int minimo, int maximo)
